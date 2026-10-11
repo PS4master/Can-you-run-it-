@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Check</title>
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+<script>try{var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}</script>
+</head>
+<body>
+<div class="top">
+  <button id="langBtn" type="button" aria-label="Language"><i>🌐</i> <span id="langTxt">فارسی</span></button>
+  <button id="themeBtn" type="button" aria-label="Theme"><i id="themeIc">☀️</i></button>
+</div>
+<header class="hero">
+  <h1 data-i="title"></h1>
+  <p data-i="sub"></p>
+</header>
+<main>
+  <form class="card" id="form">
+    <h2 data-i="specs"></h2>
+    <div class="fields">
+      <label class="field"><span data-i="gpu"></span><select id="gpu" dir="ltr"></select></label>
+      <label class="field"><span data-i="cpu"></span><select id="cpu" dir="ltr"></select></label>
+      <label class="field"><span data-i="ram"></span><select id="ram" dir="ltr"></select></label>
+    </div>
+    <h2 data-i="gs"></h2>
+    <div class="fields">
+      <label class="field"><span data-i="game"></span><select id="game" dir="ltr"></select></label>
+      <label class="field"><span data-i="res"></span><select id="res" dir="ltr"></select></label>
+      <label class="field"><span data-i="qual"></span><select id="qual"></select></label>
+    </div>
+    <button class="go" type="submit" data-i="go"></button>
+    <small data-i="hint"></small>
+  </form>
+  <section id="result" class="result" hidden></section>
+</main>
+<footer data-i="foot"></footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
