@@ -11,8 +11,9 @@
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
 <div class="top">
-  <button id="langBtn" type="button" aria-label="Language"><i>🌐</i> <span id="langTxt">فارسی</span></button>
-  <button id="themeBtn" type="button" aria-label="Theme"><i id="themeIc">☀️</i></button>
+  <label class="sw" title="Animation"><span data-i="fx"></span><input type="checkbox" id="fxBtn" role="switch" checked><span class="trk"><i class="knob"></i></span></label>
+  <label class="sw" title="Light / Dark"><input type="checkbox" id="themeBtn" role="switch" aria-label="Light / Dark"><span class="trk"><b>☀️</b><b>🌙</b><i class="knob"></i></span></label>
+  <button id="langBtn" type="button" aria-label="Language"><span>Language</span> · <span id="langTxt">فارسی</span></button>
 </div>
 <header class="hero">
   <h1 data-i="title"></h1>
@@ -22,13 +23,13 @@
   <form class="card" id="form">
     <h2 data-i="specs"></h2>
     <div class="fields">
-      <label class="field"><span data-i="gpu"></span><select id="gpu" dir="ltr"></select></label>
-      <label class="field"><span data-i="cpu"></span><select id="cpu" dir="ltr"></select></label>
+      <label class="field"><span data-i="gpu"></span><input id="gpuq" type="search" dir="auto" autocomplete="off" spellcheck="false"><select id="gpu" dir="ltr"></select><em class="gh" id="gpuh"></em></label>
+      <label class="field"><span data-i="cpu"></span><input id="cpuq" type="search" dir="auto" autocomplete="off" spellcheck="false"><select id="cpu" dir="ltr"></select><em class="gh" id="cpuh"></em></label>
       <label class="field"><span data-i="ram"></span><select id="ram" dir="ltr"></select></label>
     </div>
     <h2 data-i="gs"></h2>
     <div class="fields">
-      <label class="field"><span data-i="game"></span><select id="game" dir="ltr"></select></label>
+      <label class="field"><span data-i="game"></span><input id="gq" type="search" dir="auto" autocomplete="off" spellcheck="false"><select id="game" dir="ltr"></select><em class="gh" id="gh"></em></label>
       <label class="field"><span data-i="res"></span><select id="res" dir="ltr"></select></label>
       <label class="field"><span data-i="qual"></span><select id="qual"></select></label>
     </div>

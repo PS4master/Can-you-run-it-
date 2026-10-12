@@ -2,14 +2,14 @@ const $=s=>document.querySelector(s);
 const TC=["r","a","a","g","g","g"];
 const RN=["1280×720 (HD)","1366×768","1600×900 (HD+)","1920×1080 (Full HD)","2560×1080 (Ultrawide)","2560×1440 (2K / QHD)","3440×1440 (Ultrawide QHD)","3840×2160 (4K)","7680×4320 (8K)"];
 const I={
-fa:{title:"سیستمت بازی رو می‌کشه؟",sub:"سخت‌افزار، بازی و رزولوشن رو انتخاب کن تا ببینی اجرا میشه یا نه و چند فریم میده.",specs:"مشخصات سیستم",gpu:"کارت گرافیک",cpu:"پردازنده",ram:"رم",gs:"بازی و تنظیمات",game:"بازی",res:"رزولوشن",qual:"کیفیت گرافیک",go:"ببینیم اجرا میشه یا نه",hint:"می‌تونی کلید Enter رو هم بزنی.",foot:"نتایج تخمینی هستن و ممکنه روی سیستم واقعی کمی فرق کنن.",
+fa:{title:"سیستمت بازی رو می‌کشه؟",sub:"سخت‌افزار، بازی و رزولوشن رو انتخاب کن تا ببینی اجرا میشه یا نه و چند فریم میده.",specs:"مشخصات سیستم",gpu:"کارت گرافیک",cpu:"پردازنده",ram:"رم",gs:"بازی و تنظیمات",game:"بازی",res:"رزولوشن",qual:"کیفیت گرافیک",go:"ببینیم اجرا میشه یا نه",hint:"می‌تونی کلید Enter رو هم بزنی.",fx:"انیمیشن",search:"جستجوی بازی…",sgpu:"جستجوی کارت گرافیک… مثلاً 1060",scpu:"جستجوی پردازنده… مثلاً i5 6500",nores:"چیزی پیدا نشد",found:n=>`${n} مورد پیدا شد`,foot:"نتایج تخمینی هستن و ممکنه روی سیستم واقعی کمی فرق کنن.",
  q:["پایین","متوسط","بالا","اولترا"],lang:"EN",
  st:["در حال بررسی کارت گرافیک…","در حال بررسی پردازنده…","در حال بررسی رم و حافظه گرافیکی…","در حال محاسبه فریم‌ریت…"],
  tx:["اجرا نمیشه","اجرا میشه ولی ضعیفه","قابل بازیه (حدود ۳۰ فریم)","روان اجرا میشه (حدود ۶۰ فریم)","عالی اجرا میشه","فوق‌العاده اجرا میشه"],
  avg:"میانگین فریم (تخمینی)",low:"حداقل فریم (1% low)",bott:"گلوگاه",cpuN:"پردازنده",gpuN:"کارت گرافیک",perq:"فریم‌ریت در هر کیفیت",recT:"پیشنهاد",
  rec:(q,f)=>`بهترین تنظیم برای سیستم تو: <b>${q}</b> با حدود ${f} فریم.`,tipsT:"نکته‌ها",
  tHard:"رم یا حافظه گرافیکی از حداقل مورد نیاز بازی کمتره و بازی درست اجرا نمیشه.",tCpu:"پردازنده گلوگاه سیستمه؛ پایین آوردن رزولوشن فریم رو زیاد نمی‌کنه.",tGpu:"کارت گرافیک گلوگاه سیستمه؛ رزولوشن یا کیفیت رو کم کن تا فریم بیشتر بشه.",tRam:"رم کمتر از مقدار پیشنهادی بازیه و ممکنه لگ و پرش داشته باشی.",tVram:"حافظه گرافیکی توی این رزولوشن کمه؛ کیفیت تکسچر رو پایین بیار.",tRes:"رزولوشن پایین‌تر مثل 1920×1080 رو امتحان کن.",tHz:"فریم‌ریتت برای مانیتور ۱۴۴ هرتز هم کافیه."},
-en:{title:"Can your PC run the game?",sub:"Pick your hardware, game and resolution to see if it runs and how many FPS you'll get.",specs:"System specs",gpu:"Graphics card",cpu:"Processor",ram:"RAM",gs:"Game & settings",game:"Game",res:"Resolution",qual:"Graphics quality",go:"Check if it runs",hint:"You can also press Enter.",foot:"Results are estimates and may differ slightly on a real system.",
+en:{title:"Can your PC run the game?",sub:"Pick your hardware, game and resolution to see if it runs and how many FPS you'll get.",specs:"System specs",gpu:"Graphics card",cpu:"Processor",ram:"RAM",gs:"Game & settings",game:"Game",res:"Resolution",qual:"Graphics quality",go:"Check if it runs",hint:"You can also press Enter.",fx:"Animation",search:"Search games…",sgpu:"Search graphics cards… e.g. 1060",scpu:"Search processors… e.g. i5 6500",nores:"Nothing found",found:n=>`${n} found`,foot:"Results are estimates and may differ slightly on a real system.",
  q:["Low","Medium","High","Ultra"],lang:"فارسی",
  st:["Checking graphics card…","Checking processor…","Checking RAM and video memory…","Calculating frame rate…"],
  tx:["Won't run","Runs, but poorly","Playable (about 30 FPS)","Runs smoothly (about 60 FPS)","Runs great","Runs excellently"],
@@ -26,7 +26,7 @@ fill($("#gpu"),GPUS);fill($("#cpu"),CPUS);
 RAMS.forEach(r=>$("#ram").append(new Option(r+" GB",r)));
 GAMES.forEach((g,i)=>$("#game").append(new Option(g[0],i)));
 RES.forEach((r,i)=>$("#res").append(new Option("",i)));QUAL.forEach((q,i)=>$("#qual").append(new Option("",i)));
-$("#gpu").value=JSON.stringify(GPUS[0][1][5]);$("#cpu").value=JSON.stringify(CPUS[0][1][9]);
+$("#gpu").value=JSON.stringify(GPUS[0][1].find(x=>x[0]==="GTX 1060 6GB"));$("#cpu").value=JSON.stringify(CPUS[0][1].find(x=>x[0]==="Core i5-8400"));
 $("#ram").value=16;$("#res").value=3;$("#qual").value=2;
 
 function setLang(l){
@@ -34,12 +34,12 @@ function setLang(l){
   document.querySelectorAll("[data-i]").forEach(e=>e.textContent=d[e.dataset.i]);
   [...$("#res").options].forEach((o,i)=>o.textContent=l==="fa"?RES[i][0]:RN[i]);
   [...$("#qual").options].forEach((o,i)=>o.textContent=d.q[i]);
-  $("#langTxt").textContent=d.lang;document.title=d.title;sv("gc-lang",l);
+  $("#langTxt").textContent=d.lang;$("#gq").placeholder=d.search;$("#gpuq").placeholder=d.sgpu;$("#cpuq").placeholder=d.scpu;renderHint();document.title=d.title;sv("gc-lang",l);
   if(last&&!$("#result").hidden&&!last.busy)show();
 }
-function setTheme(t){document.documentElement.dataset.theme=t;$("#themeIc").textContent=t==="dark"?"☀️":"🌙";sv("theme",t)}
+function setTheme(t){document.documentElement.dataset.theme=t;$("#themeBtn").checked=t==="dark";setTimeout(()=>sv("theme",t),0)}
 $("#langBtn").onclick=()=>{document.body.classList.add("out");setTimeout(()=>{setLang(lang==="fa"?"en":"fa");document.body.classList.remove("out")},230)};
-$("#themeBtn").onclick=()=>{const h=document.documentElement;h.classList.add("tt");setTheme(h.dataset.theme==="dark"?"light":"dark");setTimeout(()=>h.classList.remove("tt"),450)};
+$("#themeBtn").onchange=()=>{const h=document.documentElement;h.classList.add("tt");setTheme($("#themeBtn").checked?"dark":"light");setTimeout(()=>h.classList.remove("tt"),350)};
 
 function read(){const g=JSON.parse($("#gpu").value),c=JSON.parse($("#cpu").value);sel={g:g[1],v:g[2],c:c[1],r:+$("#ram").value}}
 function calc(G,res,qi){
@@ -87,6 +87,39 @@ function show(){
   (function f(n){const p=Math.min(1,(n-t0)/900);el.textContent=Math.round(c.fps*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0);
 }
 
+// game search: filters the long list below it (best matches first); the first match is selected live, Enter runs the check
+const nz=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"");
+const hintFns=[];
+let gcnt=0;
+function renderHint(){const h=$("#gh"),q=$("#gq").value.trim();h.textContent=!q?"":gcnt?L().found(gcnt):L().nores;h.classList.toggle("err",!!q&&!gcnt);hintFns.forEach(f=>f())}
+function filt(){
+  const q=nz($("#gq").value),box=$("#game"),cur=box.value;
+  let list=GAMES.map((g,i)=>[g[0],i]);
+  if(q){const s=list.filter(x=>nz(x[0]).startsWith(q)),c=list.filter(x=>!nz(x[0]).startsWith(q)&&nz(x[0]).includes(q));list=s.concat(c)}
+  gcnt=q?list.length:0;renderHint();
+  if(!list.length)return;
+  box.innerHTML="";list.forEach(([n,i])=>box.append(new Option(n,i)));
+  if(q)box.selectedIndex=0;else if([...box.options].some(o=>o.value===cur))box.value=cur;
+}
+$("#gq").addEventListener("input",filt);
+$("#gq").addEventListener("keydown",e=>{if(e.key==="ArrowDown"){e.preventDefault();$("#game").focus()}});
+// GPU / CPU search: filters the grouped lists, selects the best match live
+function mkSearch(key,groups){
+  const q=$("#"+key+"q"),box=$("#"+key),h=$("#"+key+"h");let cnt=0;
+  const show=()=>{const v=q.value.trim();h.textContent=!v?"":cnt?L().found(cnt):L().nores;h.classList.toggle("err",!!v&&!cnt)};
+  q.addEventListener("input",()=>{
+    const s=nz(q.value),cur=box.value;
+    const gs=groups.map(([b,l])=>[b,s?l.filter(x=>nz(x[0]).includes(s)):l]).filter(g=>g[1].length);
+    cnt=s?gs.reduce((n,g)=>n+g[1].length,0):0;show();
+    if(!gs.length)return;
+    box.innerHTML="";fill(box,gs);
+    if(s){const o=[...box.options];(o.find(x=>nz(x.text).startsWith(s))||o[0]).selected=true}
+    else if([...box.options].some(x=>x.value===cur))box.value=cur;
+  });
+  q.addEventListener("keydown",e=>{if(e.key==="ArrowDown"){e.preventDefault();box.focus()}});
+  hintFns.push(show);
+}
+mkSearch("gpu",GPUS);mkSearch("cpu",CPUS);
 $("#form").onsubmit=e=>{e.preventDefault();run()};
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&!["BUTTON","TEXTAREA"].includes(e.target.tagName)){e.preventDefault();run()}});
 let sl="en";try{sl=localStorage.getItem("gc-lang")||"en"}catch(e){}
